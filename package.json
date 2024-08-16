@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@types/npm": "^7.19.3"
+  }
+}
