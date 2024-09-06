@@ -8,7 +8,7 @@ import { ExampleComponent } from './example.component';
 
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,
     ExampleComponent
   ],
   imports: [
