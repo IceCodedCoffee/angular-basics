@@ -1,0 +1,9 @@
+<app-child
+  [book]="books[0]"
+  [cart]="cart"
+  [available]="inStock()"
+  [notAvailable]="outOfStock()"
+  [remainingStock]="getRemainingStock()"
+  (addToCartEvent)="addToCart()"
+  (removeFromCartEvent)="removeFromCart()">
+</app-child>

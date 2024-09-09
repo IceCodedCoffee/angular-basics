@@ -1,0 +1,8 @@
+<div>
+    <h2 [textContent]="book.title"></h2>
+    <img [src]="book.imagePath" alt="theBook">
+    <p> {{ getRemainingStock }} pieces in stock!</p>
+    <p> {{ cart }} pieces in your cart!</p>
+    <button (click)="emitAddEvent()" [disabled]="outOfStock">Order</button>
+    <button (click)="emitRemoveEvent()" [disabled]="cart == 0">Return item</button>
+</div>
