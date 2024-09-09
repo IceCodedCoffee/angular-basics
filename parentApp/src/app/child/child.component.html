@@ -1,8 +1,16 @@
+<style>
+    p {
+        color: red;
+    }
+</style>
+
 <div>
     <h2 [textContent]="book.title"></h2>
-    <img [src]="book.imagePath" alt="theBook">
+    <div class="image-container">
+        <img [src]="book.imagePath" alt="theBook">
+    </div>
     <p> {{ getRemainingStock }} pieces in stock!</p>
     <p> {{ cart }} pieces in your cart!</p>
-    <button (click)="emitAddEvent()" [disabled]="outOfStock">Order</button>
-    <button (click)="emitRemoveEvent()" [disabled]="cart == 0">Return item</button>
+    <button (click)="emitAddEvent()" [disabled]="outOfStock" style="background-color: rgb(76, 97, 122); border-radius: 5px;">Order</button>
+    <button (click)="emitRemoveEvent()" [disabled]="cart == 0" style="background-color: rgb(111, 174, 111); border-radius: 5px;">Return item</button>
 </div>

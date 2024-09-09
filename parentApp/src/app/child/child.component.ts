@@ -4,7 +4,14 @@ import { Book } from '../book.interface';
 @Component({
   selector: 'app-child',
   templateUrl: './child.component.html',
-  styleUrl: './child.component.scss'
+  styleUrl: './child.component.scss',
+  styles: [
+    `
+    h2 {
+      color: blue;
+    }
+    `
+  ]
 })
 export class ChildComponent {
     @Input('book') book!: Book;

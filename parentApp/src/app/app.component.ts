@@ -4,11 +4,11 @@ import { Book } from './book.interface';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss', 
 })
 export class AppComponent {
   cart: number = 0;
-  readonly STOCK: number = 5;
+  readonly STOCK: number = 20;
   books: Book[] = [
     {
       title: 'HTML and CSS Book',

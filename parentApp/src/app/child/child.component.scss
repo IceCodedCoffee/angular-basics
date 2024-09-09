@@ -1,0 +1,29 @@
+div {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+    h2 {
+        text-align: center;
+    }
+    
+    .image-container {
+
+        img {
+            width: 300px;
+            margin: 0 auto;
+        }    
+    }
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        width: 100px;
+        margin: 05px auto;
+    }
+}
