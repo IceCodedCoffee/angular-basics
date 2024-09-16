@@ -13,4 +13,19 @@
     <p> {{ cart }} pieces in your cart!</p>
     <button (click)="emitAddEvent()" [disabled]="outOfStock" style="background-color: rgb(76, 97, 122); border-radius: 5px;">Order</button>
     <button (click)="emitRemoveEvent()" [disabled]="cart == 0" style="background-color: rgb(111, 174, 111); border-radius: 5px;">Return item</button>
+
+    @if(cart == 0){
+        <div>
+            Your cart is empty!
+        </div>
+    }
+    @else {
+        <div>
+            Cart has {{ cart }} items inside!
+        </div>
+    } <!--neue Syntax--> 
+
+    <div *ngIf="cart == 0; else cartEmpty">Your cart is empty!</div> <!--alte Syntax--> 
+    <ng-template #cartEmpty>Cart has {{ cart }} items inside!</ng-template>
+
 </div>
