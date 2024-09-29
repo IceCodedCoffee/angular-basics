@@ -1,0 +1,167 @@
+<h1>Product overview</h1>
+
+<div *ngIf="hasArticles()">Product is in stock</div>
+<div *ngIf="!hasArticles()">Product is <span class="outOfStock">out of</span> stock!</div>
+
+<!-- alternative newer syntax -->
+@if (hasArticles()) {
+<div>Product is in stock</div>
+}
+
+@if (!hasArticles()) {
+<div>Product is <span class="outOfStock">out of</span> stock!</div>
+}
+
+
+<h2>Product overview (ng-template-Container)</h2>
+
+<div *ngIf="hasArticles(); else noArticle">Product is in stock</div>
+<ng-template #noArticle>
+  <div>Product is <span class="outOfStock">out of</span> stock!</div>
+</ng-template>
+
+<!-- alternative newer syntax -->
+@if (hasArticles()) {
+<div>Product is in stock</div>
+}
+@else {
+<div>Product is <span class="outOfStock">out of</span> stock!</div>
+}
+
+
+<h2>Product overview (then-keyword)</h2>
+
+<div *ngIf="hasArticles(); then listArticle else noArticle"></div>
+<ng-template #listArticle>
+  <div>Product is in stock</div>
+</ng-template>
+<ng-template #noArticle>
+  <div>Product is <span class="outOfStock">out of</span> stock!</div>
+</ng-template>
+
+<!-- alternative newer syntax -->
+@if (hasArticles()) {
+<div>Product is in stock</div>
+}
+@else {
+<div>Product is <span class="outOfStock">out of</span> stock!</div>
+}
+
+
+<h2>Product overview (ngSwitch)</h2>
+
+<div [ngSwitch]="chosenFruit">
+  <div *ngSwitchCase="'Apple'">Apple has been chosen.</div>
+  <div *ngSwitchCase="'Banana'">Banana has been chosen.</div>
+  <div *ngSwitchCase="'Orange'">Orange has been chosen.</div>
+  <div *ngSwitchDefault>No fruit has been chosen.</div>
+</div>
+
+<!-- alternative newer syntax -->
+@switch (chosenFruit) {
+@case ('Apple') {
+<div>Apple has been chosen.</div>
+}
+@case ('Banana') {
+<div>Banana has been chosen.</div>
+}
+@case ('Orange') {
+<div>Orange has been chosen.</div>
+}
+@default {
+<div>No fruit has been chosen.</div>
+}
+}
+
+
+<h2>Shoppinglist</h2>
+<ul>
+  <li *ngFor="let item of shoppingList">{{ item }}</li>
+</ul>
+
+<!-- alternative newer syntax -->
+<ul>
+  @for (item of shoppingList; track item) {
+  <li>{{ item }}</li>
+  }
+</ul>
+
+
+<h2>Shoppinglist with index</h2>
+<ul>
+  <li *ngFor="let item of shoppingList; index as i">{{ item }} / Index: {{ i }}</li>
+</ul>
+
+<!-- alternative newer syntax -->
+<ul>
+  @for (item of shoppingList; track item) {
+  <li>{{ item }} / Index: {{ shoppingList.indexOf(item) }}</li>
+  }
+</ul>
+
+
+<h2>Shoppinglist and ChangeDetection</h2>
+<ul>
+  <li *ngFor="let item of shoppingList">
+    {{ item }}
+    <button (click)="onRemoveItem(item)">Remove</button>
+  </li>
+</ul>
+<div>
+  Add to list:
+  <input #input (keyup.enter)="onAddItem(input.value)">
+  <p>{{ message }}</p>
+</div>
+
+<!-- alternative newer syntax -->
+<ul>
+  @for (item of shoppingList; track item) {
+  <li>
+    {{ item }}
+    <button (click)="onRemoveItem(item)">Remove</button>
+  </li>
+  }
+</ul>
+<div>
+  Add to list:
+  <input #input (keyup.enter)="onAddItem(input.value)">
+  <p>{{ message }}</p>
+</div>
+
+
+<h2>Products costly ChangeDetection</h2>
+<ul>
+  <li *ngFor="let product of products">
+    {{ product.title }}
+  </li>
+</ul>
+<button (click)="onUpdate()">Refresh</button>
+
+<!-- alternative newer syntax -->
+<ul>
+  @for(product of products; track product) {
+  <li>
+    {{ product.title }}
+  </li>
+  }
+</ul>
+<button (click)="onUpdate()">Refresh</button>
+
+
+<h2>Products specific ChangeDetection</h2>
+<ul>
+  <li *ngFor="let product of products2; trackBy: trackProductId">
+    {{ product.title }}
+  </li>
+</ul>
+<button (click)="onUpdate2()">Refresh</button>
+
+<!-- alternative newer syntax -->
+<ul>
+  @for(product of products2; track product.title) {
+  <li>
+    {{ product.title }}
+  </li>
+  }
+</ul>
+<button (click)="onUpdate2()">Refresh</button>
