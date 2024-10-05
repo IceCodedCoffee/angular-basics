@@ -1,0 +1,42 @@
+<h2>Products</h2>
+
+<ul>
+  @for(product of products; track product.title) {
+  <li>
+    <i (click)="onClick(product)" [ngClass]="{'bi-heart': !product.favourite, 'bi-heart-fill': product.favourite}"></i>
+    {{ product.title }}
+  </li>
+  }
+</ul>
+
+
+<ul>
+  <li *ngFor="let product of products" [ngStyle]="{'font-size': getFontSize() + 'px'}">
+    {{ product.title }}
+  </li>
+</ul>
+
+<button (click)="fontSize = incrementFontSize()" [ngStyle]="{
+    'backgroundColor': isMaxFontSize ?'silver' :'darkgrey',
+    'color' : isMaxFontSize ?'grey' :'black'
+  }">Increase font-size
+</button>
+
+<button (click)="fontSize = decrementFontSize()" [ngStyle]="{
+    'backgroundColor': isMinFontSize ?'silver' :'darkgrey',
+    'color' : isMinFontSize ?'grey' :'black'
+  }">Decrease font-size
+</button>
+
+&nbsp;
+
+<span>Schriftgröße: <b>{{ fontSize }}</b>px</span>
+
+<br>
+<br>
+
+<ul>
+  <li *ngFor="let product of products" appAvailable>
+    {{ product.title }}
+  </li>
+</ul>
